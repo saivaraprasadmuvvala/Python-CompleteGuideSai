@@ -1,0 +1,27 @@
+from multiprocessing import Process
+import time
+
+def task(i:int):
+    print(f"working on process {i}")
+    time.sleep(2) # Waiting period
+    print(f'process {i} Work done ')
+    
+    
+
+p1=Process(target=task,args=(1,))
+p2=Process(target=task,args=(2,))
+
+p1.start()
+p2.start()
+
+p1.join()
+p2.join()
+
+#Output 
+
+"""
+working on process 1
+working on process 2
+process 1 Work done 
+process 2 Work done 
+"""
